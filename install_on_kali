@@ -1,0 +1,56 @@
+1) Add Docker PGP key:
+
+                curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+                
+                
+                
+                
+2) Configure Docker APT repository (Kali is based on Debian testing, which will be called buster upon release, and Docker now has support for it):
+
+                echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list
+                
+                
+                
+                
+                
+3) sudo apt-get update
+
+
+
+4) If you had older versions of Docker installed, uninstall them:
+
+                     sudo apt-get remove docker docker-engine docker.io
+                     
+                     
+                     
+                     
+ 5) Install Docker:
+
+                     sudo apt-get install docker-ce
+                     
+                     
+                     
+                     
+                     
+                     
+ 6) Test:
+
+             sudo docker run hello-world           
+             
+             
+             
+             
+             
+             
+ 7) After installation, Docker service will be started, but not enabled (i.e. it will not be started automatically after reboot). To start it:
+
+             sudo systemctl start docker            
+                     
+                     
+                     
+                     
+                     
+                     
+  8) To allow your non-root user to use Docker, add the user to docker group:
+
+              sudo usermod -aG docker $USER                   
